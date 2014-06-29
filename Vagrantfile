@@ -14,17 +14,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.ssh.forward_agent = true
 
-  config.vm.network "private_network", ip: "10.10.10.21"
+  config.vm.network "private_network", ip: "10.10.10.30"
   config.vm.hostname = "vagrant.puppet-box.com"
-
-
-  #config.hostmanager.enabled = true
-  #config.hostmanager.manage_host = true
-  #config.vm.define 'localhost-box' do |node|
-  #  node.vm.hostname = 'localhost'
-  #  node.vm.network :private_network, ip: '127.0.0.1'
-  #  node.hostmanager.aliases = %w(dev.spangleapi)
-  #end
 
   config.vm.synced_folder "shared/", "/shared"
   config.vm.synced_folder "puppet", "/etc/puppet", :mount_options => ["dmode=777,fmode=777"]
@@ -38,7 +29,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         "fqdn" => "vagrant.puppet-box.com",
     }
   end
-
-  config.vbguest.auto_update = true
 
 end
